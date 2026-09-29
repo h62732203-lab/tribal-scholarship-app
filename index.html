@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TribalScholar - Scholarship & Benefit Portal</title>
+<style>
+/* ==========================================================================
+   MINIMALIST GOVT PORTAL DESIGN SYSTEM (MAHADBT STYLE)
+   ========================================================================== */
+:root {
+    --header-top-bg: #4a4a4a;
+    --header-main-bg: #ffffff;
+    --nav-bar-bg: #d9534f;
+    --nav-item-hover: #b9322e;
+    --accent-orange: #f0ad4e;
+    --primary-blue: #0275d8;
+    --bg-light: #f5f5f5;
+    --card-bg: #ffffff;
+    --border-color: #cccccc;
+    --text-color: #333333;
+    --text-muted: #666666;
+    --success: #5cb85c;
+    --danger: #d9534f;
+    --warning: #f0ad4e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-color);
+    line-height: 1.5;
+    font-size: 13px;
+}
+
+a {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* TOP BAR & ACCESSIBILITY */
+.top-header {
+    background-color: var(--header-top-bg);
+    color: #fff;
+    padding: 4px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+}
+
+.top-header a {
+    color: #fff;
+    margin-right: 12px;
+}
+
+.access-keys button {
+    background: #000;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 1px 5px;
+    font-size: 10px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.lang-selector button {
+    background: transparent;
+    color: #fff;
+    border: none;
+    padding: 2px 6px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.lang-selector button.active {
+    background: var(--nav-bar-bg);
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+/* BRANDING HEADER */
+.brand-header {
+    background: var(--header-main-bg);
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.brand-logos {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.emblem {
+    height: 45px;
+}
+
+.brand-titles h1 {
+    font-size: 22px;
+    color: var(--nav-bar-bg);
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+.brand-titles span {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.auth-header-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-status {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* MAIN NAVIGATION BAR */
+.main-nav {
+    background-color: var(--nav-bar-bg);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.nav-links li button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-links li button:hover,
+.nav-links li button.active {
+    background-color: var(--nav-item-hover);
+}
+
+.mobile-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+/* MAIN CONTAINER & GRID */
+.container {
+    max-width: 1200px;
+    margin: 15px auto;
+    padding: 0 10px;
+}
+
+.layout-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr 240px;
+    gap: 15px;
+}
+
+/* SIDEBAR PANELS */
+.sidebar-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.panel-header {
+    background: #e9e9e9;
+    padding: 8px 12px;
+    font-weight: bold;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border-color);
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.panel-body {
+    padding: 12px;
+}
+
+.quick-links-list {
+    list-style: none;
+}
+
+.quick-links-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.quick-links-list li:last-child {
+    border-bottom: none;
+}
+
+.quick-links-list a {
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+}
+
+/* MAIN CONTENT PANE */
+.main-content {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 3px;
+    min-height: 500px;
+}
+
+.section-pane {
+    display: block;
+}
+
+.section-pane.hidden {
+    display: none;
+}
+
+.pane-title {
+    font-size: 16px;
+    color: var(--nav-bar-bg);
+    border-bottom: 2px solid var(--nav-bar-bg);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* BUTTONS & FORM INPUTS */
+.btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    color: #fff;
+}
+
+.btn-success {
+    background-color: var(--success);
+    color: #fff;
+}
+
+.btn-default {
+    background-color: #e6e6e6;
+    border-color: #adadad;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    font-size: 12px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+/* SCHOLARSHIP CARDS */
+.scholarship-item {
+    border: 1px solid var(--border-color);
+    background: #fff;
+    margin-bottom: 12px;
+    border-radius: 2px;
+}
+
+.scholarship-item-header {
+    background: #f8f8f8;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scholarship-item-body {
+    padding: 12px;
+}
+
+.status-badge {
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 10px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.badge-green { background-color: var(--success); }
+.badge-red { background-color: var(--danger); }
+.badge-orange { background-color: var(--warning); }
+
+/* CALCULATOR COMPONENT */
+.calc-box {
+    background: #f9f9f9;
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 3px;
+}
+
+.score-meter {
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.score-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--success);
+    transition: width 0.5s ease;
+}
+
+/* FOOTER */
+footer {
+    background: #333;
+    color: #ccc;
+    padding: 15px 0;
+    margin-top: 20px;
+    font-size: 11px;
+    text-align: center;
+    border-top: 3px solid var(--nav-bar-bg);
+}
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 992px) {
+    .layout-grid {
+        grid-template-columns: 1fr;
+    }
+    .brand-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-toggle {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+    }
+    .nav-links.show {
+        display: flex;
+    }
+    .nav-links li button {
+        width: 100%;
+        text-align: left;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .top-header {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ACCESSIBILITY & LANGUAGE HEADER -->
+<div class="top-header">
+    <div>
+        <a href="#" data-key="skipToContent">Skip To Main Content</a> | 
+        <a href="#" data-key="skipToNav">Skip To Navigation</a>
+    </div>
+    <div style="display:flex; gap:15px; align-items:center;">
+        <div class="access-keys">
+            <button onclick="document.body.style.fontSize='12px'">A-</button>
+            <button onclick="document.body.style.fontSize='13px'">A</button>
+            <button onclick="document.body.style.fontSize='14px'">A+</button>
+        </div>
+        <div class="lang-selector">
+            <button class="lang-btn active" onclick="setLanguage('en', event)">English</button> | 
+            <button class="lang-btn" onclick="setLanguage('hi', event)">हिन्दी</button> | 
+            <button class="lang-btn" onclick="setLanguage('mr', event)">मराठी</button>
+        </div>
+    </div>
+</div>
+
+<!-- BRANDING HEADER -->
+<div class="brand-header">
+    <div class="brand-logos">
+        <div class="brand-titles">
+            <h1 data-key="brandTitle">TribalScholar</h1>
+            <span data-key="brandSubtitle">National Direct Benefit Transfer & Tribal Welfare Portal</span>
+        </div>
+    </div>
+    <div class="auth-header-box" id="authHeaderBox">
+        <!-- Dynamic Login/User Status -->
+    </div>
+</div>
+
+<!-- NAVIGATION BAR -->
+<nav class="main-nav">
+    <button class="mobile-toggle" onclick="toggleMobileMenu()" data-key="menuBtn">☰ Menu</button>
+    <ul class="nav-links" id="navLinks">
+        <li><button class="active" id="btn-home" onclick="switchTab('home')" data-key="navHome">Home</button></li>
+        <li><button id="btn-profile" onclick="switchTab('profile')" data-key="navProfile">Applicant Profile</button></li>
+        <li><button id="btn-scholarships" onclick="switchTab('scholarships')" data-key="navScholarships">All Schemes</button></li>
+        <li><button id="btn-calculator" onclick="switchTab('calculator')" data-key="navCalc">Eligibility Calculator</button></li>
+        <li><button id="btn-applications" onclick="switchTab('applications')" data-key="navApplications">Track Status</button></li>
+        <li><button id="btn-notifications" onclick="switchTab('notifications')" data-key="navNotifications">Notices</button></li>
+    </ul>
+</nav>
+
+<!-- MAIN CONTAINER LAYOUT -->
+<div class="container">
+    <div class="layout-grid">
+        
+        <!-- LEFT SIDEBAR -->
+        <aside>
+            <div class="sidebar-panel">
+                <div class="panel-header" data-key="leftPanelTitle">Notice Board</div>
+                <div class="panel-body">
+                    <p style="font-size:11px; margin-bottom:8px;"><strong data-key="notice1Label">Citizen Charter:</strong> <span data-key="notice1Text">Application tracking live on portal.</span></p>
+                    <p style="font-size:11px; color:var(--text-muted);" data-key="notice2Text">Ensure documents are verified by designated authorities.</p>
+                </div>
+            </div>
+            <div class="sidebar-panel">
+                <div class="panel-header" data-key="helplineTitle">Helpline Support</div>
+                <div class="panel-body">
+                    <p style="font-size:12px;"><strong data-key="tollFreeLabel">Toll Free:</strong> 1800-11-0001</p>
+                    <p style="font-size:11px; color:var(--text-muted);" data-key="timingText">Timing: 09:00 AM to 06:00 PM</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CENTER MAIN CONTENT AREA -->
+        <main class="main-content">
+            
+            <!-- HOME TAB -->
+            <section id="tab-home" class="section-pane">
+                <div class="pane-title" data-key="homeTitle">Direct Benefit Transfer Schemes</div>
+                <p style="margin-bottom:15px;" data-key="homeDesc">Welcome to the TribalScholar integrated portal for post-matric scholarships, financial assistance, and tribal welfare schemes across India.</p>
+                
+                <div class="scholarship-item">
+                    <div class="scholarship-item-header">
+                        <span data-key="announcementHeader">Latest Announcements</span>
+                    </div>
+                    <div class="scholarship-item-body">
+                        <ul style="margin-left:18px; line-height:1.8;">
+                            <li data-key="ann1">Aadhaar linking is mandatory for disbursement of scholarship funds.</li>
+                            <li data-key="ann2">Post Matric Scholarship applications open for current academic year across all participating states.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AUTHENTICATION TAB (LOGIN / REGISTER) -->
+            <section id="tab-auth" class="section-pane hidden">
+                <div class="pane-title" id="authPaneTitle" data-key="authLoginHeader">User Login</div>
+                <div style="max-width:350px; margin:0 auto;" id="authFormContainer">
+                    <form id="authForm" onsubmit="handleAuth(event)">
+                        <div class="form-group">
+                            <label data-key="lblUsername">Username / Email</label>
+                            <input type="text" id="auth-username" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-key="lblPassword">Password</label>
+                            <input type="password" id="auth-password" class="form-control" required>
+                        </div>
+                        <div class="form-group" id="confirmPassGroup" style="display:none;">
+                            <label data-key="lblConfirmPassword">Confirm Password</label>
+                            <input type="password" id="auth-confirm" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-danger" style="width:100%;" id="authSubmitBtn" data-key="btnLoginSubmit">Login</button>
+                    </form>
+                    <div style="text-align:center; margin-top:10px;">
+                        <a href="#" onclick="toggleAuthMode()" id="authToggleLink" data-key="linkRegister">New User? Register Here</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROFILE & DOCUMENT LOCKER TAB -->
+            <section id="tab-profile" class="section-pane hidden">
+                <div class="pane-title" data-key="profileTitle">Applicant Profile & Credentials</div>
+                <form id="profileForm" onsubmit="saveProfile(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label data-key="lblFullName">Full Name</label>
+                            <input type="text" id="prof-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-key="lblCategory">Social Category</label>
+                            <select id="prof-category" class="form-control" required>
+                                <option value="" data-key="optSelectCategory">Select Category</option>
+                                <option value="ST" data-key="optST">Scheduled Tribe (ST)</option>
+                                <option value="SC" data-key="optSC">Scheduled Caste (SC)</option>
+                                <option value="OBC" data-key="optOBC">Other Backward Class (OBC)</option>
+                                <option value="General" data-key="optGeneral">General</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-key="lblState">State</label>
+                            <select id="prof-state" class="form-control" required>
+                                <option value="" data-key="optSelectState">Select State</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Other" data-key="optOtherState">Other State / UT</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-key="lblIncome">Annual Income (₹)</label>
+                            <input type="number" id="prof-income" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-key="lblEducation">Education Level</label>
+                            <select id="prof-education" class="form-control" required>
+                                <option value="" data-key="optSelectLevel">Select Level</option>
+                                <option value="diploma" data-key="optDiploma">Diploma</option>
+                                <option value="undergraduate" data-key="optUG">Undergraduate</option>
+                                <option value="postgraduate" data-key="optPG">Postgraduate</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-key="lblMarks">Previous Year Marks (%)</label>
+                            <input type="number" id="prof-percentage" class="form-control" min="0" max="100" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top:10px;" data-key="btnSave">Save Profile</button>
+                </form>
+
+                <div class="pane-title" style="margin-top:25px;" data-key="docTitle">Document Locker</div>
+                <div id="documentLocker">
+                    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee; align-items:center;">
+                        <div>
+                            <strong data-key="docCaste">Caste / Category Certificate</strong>
+                            <div style="font-size:11px; color:#666;" id="st-caste-status">Status: Missing</div>
+                        </div>
+                        <div>
+                            <input type="file" id="file-caste" style="display:none" onchange="handleFileUpload('caste')">
+                            <button class="btn btn-default" onclick="document.getElementById('file-caste').click()" data-key="btnUpload">Upload</button>
+                        </div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee; align-items:center;">
+                        <div>
+                            <strong data-key="docIncome">Income Certificate</strong>
+                            <div style="font-size:11px; color:#666;" id="st-income-status">Status: Missing</div>
+                        </div>
+                        <div>
+                            <input type="file" id="file-income" style="display:none" onchange="handleFileUpload('income')">
+                            <button class="btn btn-default" onclick="document.getElementById('file-income').click()" data-key="btnUpload">Upload</button>
+                        </div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee; align-items:center;">
+                        <div>
+                            <strong data-key="docMarks">Academic Marksheet</strong>
+                            <div style="font-size:11px; color:#666;" id="st-marks-status">Status: Missing</div>
+                        </div>
+                        <div>
+                            <input type="file" id="file-marks" style="display:none" onchange="handleFileUpload('marks')">
+                            <button class="btn btn-default" onclick="document.getElementById('file-marks').click()" data-key="btnUpload">Upload</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCHOLARSHIPS TAB -->
+            <section id="tab-scholarships" class="section-pane hidden">
+                <div class="pane-title" data-key="schemesTitle">Available Schemes</div>
+                <div id="scholarshipsContainer">
+                    <!-- Dynamic Schemes -->
+                </div>
+            </section>
+
+            <!-- PROBABILITY CALCULATOR TAB -->
+            <section id="tab-calculator" class="section-pane hidden">
+                <div class="pane-title" data-key="calcTitle">Scholarship Probability Calculator</div>
+                <p style="margin-bottom:10px;" data-key="calcIntro">Select a scheme to calculate your approval probability based on profile parameters.</p>
+                
+                <div class="form-group">
+                    <label data-key="lblSelectScheme">Select Scholarship Scheme</label>
+                    <select id="calcSchemeSelect" class="form-control" onchange="calculateProbability()">
+                        <option value="" data-key="optChooseScheme">-- Choose Scheme --</option>
+                    </select>
+                </div>
+
+                <div class="calc-box" id="calcResults" style="display:none;">
+                    <h4 id="calcSchemeName">Scheme Probability</h4>
+                    <div class="score-meter">
+                        <div class="score-fill" id="scoreBar"></div>
+                    </div>
+                    <div style="font-size:16px; font-weight:bold; margin-bottom:10px;" id="scorePercent">0% Probability</div>
+                    <div id="calcBreakdown"></div>
+                </div>
+            </section>
+
+            <!-- APPLICATION TRACKER TAB -->
+            <section id="tab-applications" class="section-pane hidden">
+                <div class="pane-title" data-key="trackerTitle">Application Status Tracker</div>
+                <div id="applicationsContainer">
+                    <!-- Dynamic Tracker Content -->
+                </div>
+            </section>
+
+            <!-- NOTIFICATIONS TAB -->
+            <section id="tab-notifications" class="section-pane hidden">
+                <div class="pane-title" data-key="notifTitle">System Notifications</div>
+                <div class="scholarship-item">
+                    <div class="scholarship-item-body">
+                        <p><strong data-key="notif1Head">System Updated:</strong> <span data-key="notif1Text">National TribalScholar portal and national scholarship database active.</span></p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside>
+            <div class="sidebar-panel">
+                <div class="panel-header" data-key="rightPanelTitle">Schemes Category</div>
+                <div class="panel-body" style="padding:0;">
+                    <ul class="quick-links-list">
+                        <li style="padding:8px 12px;"><a href="#" onclick="switchTab('scholarships')" data-key="catPostMatric">› Post Matric Scholarship</a></li>
+                        <li style="padding:8px 12px;"><a href="#" onclick="switchTab('scholarships')" data-key="catTribal">› Tribal Department Schemes</a></li>
+                        <li style="padding:8px 12px;"><a href="#" onclick="switchTab('scholarships')" data-key="catHigherEdu">› Higher Education Schemes</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p data-key="footerCopyright">Copyright © 2026 TribalScholar Portal, Ministry of Tribal Affairs & Partner State Governments. All Rights Reserved.</p>
+    <p style="margin-top:5px; color:#888;" data-key="footerDesign">Designed for Official Hackathon Evaluation.</p>
+</footer>
+
+<!-- APPLICATION LOGIC & DATA ENGINE -->
+<script>
+/* ==========================================================================
+   STATE MANAGEMENT & DATABASES
+   ========================================================================== */
+const scholarshipDatabase = [
+    {
+        id: "mh-st-postmatric",
+        name: "Post Matric Scholarship Scheme for ST Students",
+        provider: "Tribal Development Department",
+        state: "Maharashtra",
+        category: ["ST"],
+        maxIncome: 250000,
+        minEducation: ["diploma", "undergraduate", "postgraduate"],
+        applyUrl: "https://mahadbt.maharashtra.gov.in/"
+    },
+    {
+        id: "mh-st-hostel",
+        name: "Pandit Deendayal Upadhyay Swayam Yojana",
+        provider: "Tribal Welfare Dept",
+        state: "Maharashtra",
+        category: ["ST"],
+        maxIncome: 250000,
+        minEducation: ["undergraduate", "postgraduate"],
+        applyUrl: "https://mahadbt.maharashtra.gov.in/"
+    },
+    {
+        id: "central-top-class",
+        name: "National Higher Education Fellowship for ST",
+        provider: "Ministry of Tribal Affairs, GoI",
+        state: "All India",
+        category: ["ST"],
+        maxIncome: 600000,
+        minEducation: ["undergraduate", "postgraduate"],
+        applyUrl: "https://scholarships.gov.in/"
+    },
+    {
+        id: "mp-st-postmatric",
+        name: "Madhya Pradesh ST Post-Matric Scholarship Scheme",
+        provider: "Tribal Welfare Department, MP",
+        state: "Madhya Pradesh",
+        category: ["ST"],
+        maxIncome: 250000,
+        minEducation: ["diploma", "undergraduate", "postgraduate"],
+        applyUrl: "https://www.mpteqw.gov.in/"
+    },
+    {
+        id: "od-st-postmatric",
+        name: "Odisha State Post-Matric Scholarship for ST",
+        provider: "ST & SC Development Department",
+        state: "Odisha",
+        category: ["ST"],
+        maxIncome: 250000,
+        minEducation: ["diploma", "undergraduate", "postgraduate"],
+        applyUrl: "https://scholarship.odisha.gov.in/"
+    },
+    {
+        id: "rj-st-postmatric",
+        name: "Rajasthan Uttar Matric Scholarship for ST",
+        provider: "Social Justice and Empowerment Dept",
+        state: "Rajasthan",
+        category: ["ST"],
+        maxIncome: 250000,
+        minEducation: ["diploma", "undergraduate", "postgraduate"],
+        applyUrl: "https://sjms.rajasthan.gov.in/"
+    },
+    {
+        id: "gj-st-postmatric",
+        name: "Umbrella Scheme for Education of ST Students - Post Matric",
+        provider: "Tribal Development Department, Gujarat",
+        state: "Gujarat",
+        category: ["ST"],
+        maxIncome: 250000,
+        minEducation: ["diploma", "undergraduate", "postgraduate"],
+        applyUrl: "https://digitalgujarat.gov.in/"
+    },
+    {
+        id: "kn-st-postmatric",
+        name: "Karnataka SSP Post-Matric Scholarship for ST",
+        provider: "Scheduled Tribes Welfare Department",
+        state: "Karnataka",
+        category: ["ST"],
+        maxIncome: 250000,
+        minEducation: ["diploma", "undergraduate", "postgraduate"],
+        applyUrl: "https://ssp.postmatric.karnataka.gov.in/"
+    }
+];
+
+let currentUser = JSON.parse(localStorage.getItem('av_current_user')) || null;
+let studentProfile = null;
+let userDocuments = { caste: false, income: false, marks: false };
+let trackedApplications = [];
+let isRegisterMode = false;
+let currentLang = 'en';
+
+/* USER DATA ISOLATION HELPERS */
+function loadUserData() {
+    if (currentUser && currentUser.username) {
+        studentProfile = JSON.parse(localStorage.getItem(`av_student_profile_${currentUser.username}`)) || null;
+        userDocuments = JSON.parse(localStorage.getItem(`av_user_docs_${currentUser.username}`)) || { caste: false, income: false, marks: false };
+        trackedApplications = JSON.parse(localStorage.getItem(`av_tracked_apps_${currentUser.username}`)) || [];
+    } else {
+        studentProfile = null;
+        userDocuments = { caste: false, income: false, marks: false };
+        trackedApplications = [];
+    }
+}
+
+function saveUserData() {
+    if (currentUser && currentUser.username) {
+        localStorage.setItem(`av_student_profile_${currentUser.username}`, JSON.stringify(studentProfile));
+        localStorage.setItem(`av_user_docs_${currentUser.username}`, JSON.stringify(userDocuments));
+        localStorage.setItem(`av_tracked_apps_${currentUser.username}`, JSON.stringify(trackedApplications));
+    }
+}
+
+/* I18N DICTIONARY */
+const i18n = {
+    en: {
+        skipToContent: "Skip To Main Content",
+        skipToNav: "Skip To Navigation",
+        brandTitle: "TribalScholar",
+        brandSubtitle: "National Direct Benefit Transfer & Tribal Welfare Portal",
+        menuBtn: "☰ Menu",
+        navHome: "Home", navProfile: "Applicant Profile", navScholarships: "All Schemes",
+        navCalc: "Eligibility Calculator", navApplications: "Track Status", navNotifications: "Notices",
+        leftPanelTitle: "Notice Board", helplineTitle: "Helpline Support", rightPanelTitle: "Schemes Category",
+        notice1Label: "Citizen Charter:", notice1Text: "Application tracking live on portal.",
+        notice2Text: "Ensure documents are verified by designated authorities.",
+        tollFreeLabel: "Toll Free:", timingText: "Timing: 09:00 AM to 06:00 PM",
+        homeTitle: "Direct Benefit Transfer Schemes", homeDesc: "Welcome to the TribalScholar integrated portal for post-matric scholarships, financial assistance, and tribal welfare schemes across India.",
+        announcementHeader: "Latest Announcements", ann1: "Aadhaar linking is mandatory for disbursement of scholarship funds.",
+        ann2: "Post Matric Scholarship applications open for current academic year across all participating states.", profileTitle: "Applicant Profile & Credentials",
+        lblFullName: "Full Name", lblCategory: "Social Category", lblState: "State", lblIncome: "Annual Income (₹)",
+        lblEducation: "Education Level", lblMarks: "Previous Year Marks (%)", btnSave: "Save Profile", docTitle: "Document Locker",
+        docCaste: "Caste / Category Certificate", docIncome: "Income Certificate", docMarks: "Academic Marksheet", btnUpload: "Upload",
+        statusMissing: "Status: Missing", statusUploaded: "Status: Uploaded",
+        optSelectCategory: "Select Category", optST: "Scheduled Tribe (ST)", optSC: "Scheduled Caste (SC)", optOBC: "Other Backward Class (OBC)", optGeneral: "General",
+        optSelectState: "Select State", optOtherState: "Other State / UT",
+        optSelectLevel: "Select Level", optDiploma: "Diploma", optUG: "Undergraduate", optPG: "Postgraduate",
+        schemesTitle: "Available Schemes", calcTitle: "Scholarship Probability Calculator", calcIntro: "Select a scheme to calculate your approval probability based on profile parameters.",
+        lblSelectScheme: "Select Scholarship Scheme", optChooseScheme: "-- Choose Scheme --",
+        trackerTitle: "Application Status Tracker", notifTitle: "System Notifications",
+        notif1Head: "System Updated:", notif1Text: "National TribalScholar portal and national scholarship database active.",
+        catPostMatric: "› Post Matric Scholarship", catTribal: "› Tribal Department Schemes", catHigherEdu: "› Higher Education Schemes",
+        footerCopyright: "Copyright © 2026 TribalScholar Portal, Ministry of Tribal Affairs & Partner State Governments. All Rights Reserved.",
+        footerDesign: "Designed for Official Hackathon Evaluation.",
+        authLoginHeader: "User Login", authRegisterHeader: "User Registration",
+        lblUsername: "Username / Email", lblPassword: "Password", lblConfirmPassword: "Confirm Password",
+        btnLoginSubmit: "Login", btnRegisterSubmit: "Register",
+        linkRegister: "New User? Register Here", linkLogin: "Already registered? Login",
+        welcomeUser: "Welcome, ", btnLogout: "Logout", btnLoginRegister: "Login / Register",
+        applyPortal: "Apply Portal ↗", trackApp: "Track Application",
+        deptLabel: "Department:", incomeCapLabel: "Income Cap:",
+        statusInProgress: "In Progress", initiatedDate: "Initiated Date:", appStatusMsg: "Status: Document verification under process at institutional level.",
+        noAppsTracked: "No active applications tracked.", matchProb: "- Match Probability", probabilityText: "Probability",
+        catMatch: "✓ Social Category matches scheme criteria (+30%)", catMismatch: "✕ Social Category mismatch (+0%)",
+        incMatch: "✓ Family income is within cap limit ₹", incMismatch: "✕ Family income exceeds cap limit (+0%)",
+        marksHigh: "✓ Marks ≥ 75%: High academic score (+25%)", marksMod: "✓ Marks 60%-74%: Moderate academic score (+18%)",
+        marksPass: "✓ Marks 40%-59%: Passing qualification (+10%)", marksLow: "✕ Marks below basic criteria (+0%)",
+        docReadiness: "✓ Document Locker Readiness"
+    },
+    hi: {
+        skipToContent: "मुख्य सामग्री पर जाएं",
+        skipToNav: "नेविगेशन पर जाएं",
+        brandTitle: "ट्राइबलस्कॉलर",
+        brandSubtitle: "राष्ट्रीय प्रत्यक्ष लाभ अंतरण एवं जनजातीय कल्याण पोर्टल",
+        menuBtn: "☰ मेनू",
+        navHome: "मुख्य पृष्ठ", navProfile: "आवेदक प्रोफ़ाइल", navScholarships: "सभी योजनाएं",
+        navCalc: "पात्रता कैलकुलेटर", navApplications: "स्थिति ट्रैक करें", navNotifications: "सूचनाएं",
+        leftPanelTitle: "सूचना पट्ट", helplineTitle: "हेल्पलाइन सहायता", rightPanelTitle: "योजना श्रेणी",
+        notice1Label: "नागरिक चार्टर:", notice1Text: "पोर्टल पर आवेदन ट्रैकिंग लाइव है।",
+        notice2Text: "सुनिश्चित करें कि दस्तावेज़ सक्षम अधिकारियों द्वारा सत्यापित हैं।",
+        tollFreeLabel: "टोल फ्री:", timingText: "समय: सुबह 09:00 बजे से शाम 06:00 बजे तक",
+        homeTitle: "प्रत्यक्ष लाभ अंतरण योजनाएं", homeDesc: "भारत भर में मैट्रिकोत्तर छात्रवृत्ति, वित्तीय सहायता और जनजातीय कल्याण योजनाओं के लिए ट्राइबलस्कॉलर एकीकृत पोर्टल पर आपका स्वागत है।",
+        announcementHeader: "नवीनतम घोषणाएं", ann1: "छात्रवृत्ति राशि के भुगतान के लिए आधार लिंक करना अनिवार्य है।",
+        ann2: "सभी सहभागी राज्यों में चालू शैक्षणिक वर्ष के लिए छात्रवृत्ति आवेदन खुले हैं।", profileTitle: "आवेदक प्रोफ़ाइल और क्रेडेंशियल",
+        lblFullName: "पूरा नाम", lblCategory: "सामाजिक वर्ग", lblState: "राज्य", lblIncome: "वार्षिक आय (₹)",
+        lblEducation: "शिक्षा का स्तर", lblMarks: "पिछली वर्ष के अंक (%)", btnSave: "प्रोफ़ाइल सहेजें", docTitle: "दस्तावेज़ लॉकर",
+        docCaste: "जाति / वर्ग प्रमाण पत्र", docIncome: "आय प्रमाण पत्र", docMarks: "शैक्षणिक अंकसूची", btnUpload: "अपलोड करें",
+        statusMissing: "स्थिति: अनुपलब्ध", statusUploaded: "स्थिति: अपलोड किया गया",
+        optSelectCategory: "वर्ग चुनें", optST: "अनुसूचित जनजाति (ST)", optSC: "अनुसूचित जाति (SC)", optOBC: "अन्य पिछड़ा वर्ग (OBC)", optGeneral: "सामान्य",
+        optSelectState: "राज्य चुनें", optOtherState: "अन्य राज्य / केंद्र शासित प्रदेश",
+        optSelectLevel: "स्तर चुनें", optDiploma: "डिप्लोमा", optUG: "स्नातक (UG)", optPG: "स्नातकोत्तर (PG)",
+        schemesTitle: "उपलब्ध योजनाएं", calcTitle: "छात्रवृत्ति संभावना कैलकुलेटर", calcIntro: "प्रोफ़ाइल मानकों के आधार पर अपनी स्वीकृति संभावना की गणना करने के लिए एक योजना चुनें।",
+        lblSelectScheme: "छात्रवृत्ति योजना चुनें", optChooseScheme: "-- योजना चुनें --",
+        trackerTitle: "आवेदन स्थिति ट्रैकर", notifTitle: "सिस्टम सूचनाएं",
+        notif1Head: "सिस्टम अद्यतन:", notif1Text: "राष्ट्रीय ट्राइबलस्कॉलर पोर्टल और राष्ट्रीय छात्रवृत्ति डेटाबेस सक्रिय है।",
+        catPostMatric: "› मैट्रिकोत्तर छात्रवृत्ति", catTribal: "› जनजातीय विभाग की योजनाएं", catHigherEdu: "› उच्च शिक्षा योजनाएं",
+        footerCopyright: "कॉपीराइट © 2026 ट्राइबलस्कॉलर पोर्टल, जनजातीय कार्य मंत्रालय और सहभागी राज्य सरकारें। सर्वाधिकार सुरक्षित।",
+        footerDesign: "आधिकारिक हैकाथॉन मूल्यांकन के लिए डिज़ाइन किया गया।",
+        authLoginHeader: "उपयोगकर्ता लॉगिन", authRegisterHeader: "उपयोगकर्ता पंजीकरण",
+        lblUsername: "उपयोगकर्ता नाम / ईमेल", lblPassword: "पासवर्ड", lblConfirmPassword: "पासवर्ड की पुष्टि करें",
+        btnLoginSubmit: "लॉगिन करें", btnRegisterSubmit: "पंजीकरण करें",
+        linkRegister: "नए उपयोगकर्ता? यहां पंजीकरण करें", linkLogin: "पहले से पंजीकृत हैं? लॉगिन करें",
+        welcomeUser: "स्वागत है, ", btnLogout: "लॉगआउट", btnLoginRegister: "लॉगिन / पंजीकरण",
+        applyPortal: "आवेदन पोर्टल ↗", trackApp: "आवेदन ट्रैक करें",
+        deptLabel: "विभाग:", incomeCapLabel: "आय सीमा:",
+        statusInProgress: "प्रक्रिया में", initiatedDate: "शुरू की गई तिथि:", appStatusMsg: "स्थिति: संस्थागत स्तर पर दस्तावेज़ सत्यापन प्रक्रियाधीन है।",
+        noAppsTracked: "कोई सक्रिय आवेदन ट्रैक नहीं किया गया।", matchProb: "- पात्रता संभावना", probabilityText: "संभावना",
+        catMatch: "✓ सामाजिक वर्ग योजना के मानदंडों से मेल खाता है (+30%)", catMismatch: "✕ सामाजिक वर्ग बेमेल है (+0%)",
+        incMatch: "✓ पारिवारिक आय सीमा के भीतर है ₹", incMismatch: "✕ पारिवारिक आय सीमा से अधिक है (+0%)",
+        marksHigh: "✓ अंक ≥ 75%: उच्च शैक्षणिक अंक (+25%)", marksMod: "✓ अंक 60%-74%: मध्यम शैक्षणिक अंक (+18%)",
+        marksPass: "✓ अंक 40%-59%: उत्तीर्ण योग्यता (+10%)", marksLow: "✕ अंक बुनियादी मानदंड से कम हैं (+0%)",
+        docReadiness: "✓ दस्तावेज़ लॉकर तैयारी"
+    },
+    mr: {
+        skipToContent: "मुख्य सामग्रीवर जा",
+        skipToNav: "नेव्हिगेशनवर जा",
+        brandTitle: "ट्रायबलस्कॉलर",
+        brandSubtitle: "राष्ट्रीय थेट लाभ हस्तांतरण आणि आदिवासी कल्याण पोर्टल",
+        menuBtn: "☰ मेनू",
+        navHome: "मुख्यपृष्ठ", navProfile: "अर्जदार प्रोफाइल", navScholarships: "सर्व योजना",
+        navCalc: "पात्रता कॅल्क्युलेटर", navApplications: "स्थिती ट्रॅक करा", navNotifications: "सूचना",
+        leftPanelTitle: "सूचना फलक", helplineTitle: "हेल्पलाइन मदत", rightPanelTitle: "योजना प्रवर्ग",
+        notice1Label: "नागरिक सनद:", notice1Text: "पोर्टलवर अर्ज ट्रॅकिंग थेट उपलब्ध आहे.",
+        notice2Text: "कागदपत्रे नियुक्त अधिकाऱ्यांकडून सत्यापित केल्याची खात्री करा.",
+        tollFreeLabel: "टोल फ्री:", timingText: "वेळ: सकाळी ०९:०० ते संध्याकाळी ०६:००",
+        homeTitle: "थेट लाभ हस्तांतरण योजना", homeDesc: "भारतभरातील मॅट्रिकोत्तर शिष्यवृत्ती, आर्थिक सहाय्य आणि आदिवासी कल्याण योजनांसाठी ट्रायबलस्कॉलर एकात्मिक पोर्टलवर आपले स्वागत आहे.",
+        announcementHeader: "नवीन घोषणा", ann1: "शिष्यवृत्ती निधी वितरणासाठी आधार लिंक करणे अनिवार्य आहे.",
+        ann2: "सर्व सहभागी राज्यांमध्ये चालू शैक्षणिक वर्षासाठी शिष्यवृत्ती अर्ज उघडे आहेत.", profileTitle: "अर्जदार प्रोफाइल माहिती",
+        lblFullName: "पूर्ण नाव", lblCategory: "सामाजिक प्रवर्ग", lblState: "राज्य", lblIncome: "वार्षिक उत्पन्न (₹)",
+        lblEducation: "शिक्षणाचा स्तर", lblMarks: "मागील वर्षाचे गुण (%)", btnSave: "प्रोफाइल जतन करा", docTitle: "कागदपत्र लॉकर",
+        docCaste: "जात / प्रवर्ग प्रमाणपत्र", docIncome: "उत्पन्न प्रमाणपत्र", docMarks: "शैक्षणिक गुणपत्रिका", btnUpload: "अपलोड करा",
+        statusMissing: "स्थिती: उपलब्ध नाही", statusUploaded: "स्थिती: अपलोड केले",
+        optSelectCategory: "प्रवर्ग निवडा", optST: "अनुसूचित जमाती (ST)", optSC: "अनुसूचित जाती (SC)", optOBC: "इतर मागासवर्ग (OBC)", optGeneral: "सर्वसाधारण",
+        optSelectState: "राज्य निवडा", optOtherState: "इतर राज्य / केंद्रशासित प्रदेश",
+        optSelectLevel: "स्तर निवडा", optDiploma: "डिप्लोमा", optUG: "पदवी (UG)", optPG: "पदव्युत्तर (PG)",
+        schemesTitle: "उपलब्ध योजना", calcTitle: "शिष्यवृत्ती संभाव्यता कॅल्क्युलेटर", calcIntro: "प्रोफाइल निकषांनुसार तुमची मंजुरी संभाव्यता मोजण्यासाठी योजना निवडा.",
+        lblSelectScheme: "शिष्यवृत्ती योजना निवडा", optChooseScheme: "-- योजना निवडा --",
+        trackerTitle: "अर्ज स्थिती ट्रॅकर", notifTitle: "सिस्टम सूचना",
+        notif1Head: "सिस्टम अपडेट:", notif1Text: "राष्ट्रीय ट्रायबलस्कॉलर पोर्टल आणि राष्ट्रीय शिष्यवृत्ती डेटाबेस सक्रिय आहे.",
+        catPostMatric: "› मॅट्रिकोत्तर शिष्यवृत्ती", catTribal: "› आदिवासी विकास विभाग योजना", catHigherEdu: "› उच्च शिक्षण योजना",
+        footerCopyright: "सर्व हक्क सुरक्षित © २०२६ ट्रायबलस्कॉलर पोर्टल, आदिवासी कार्य मंत्रालय आणि सहभागी राज्य सरकारे.",
+        footerDesign: "अधिकृत हॅकाथॉन मूल्यांकनासाठी डिझाइन केलेले.",
+        authLoginHeader: "वापरकर्ता लॉगिन", authRegisterHeader: "वापरकर्ता नोंदणी",
+        lblUsername: "वापरकर्ता नाव / ईमेल", lblPassword: "पासवर्ड", lblConfirmPassword: "पासवर्डची पुष्टी करा",
+        btnLoginSubmit: "लॉगिन करा", btnRegisterSubmit: "नोंदणी करा",
+        linkRegister: "नवीन वापरकर्ता? येथे नोंदणी करा", linkLogin: "आधीच नोंदणी केली आहे? लॉगिन करा",
+        welcomeUser: "स्वागत आहे, ", btnLogout: "लॉगआऊट", btnLoginRegister: "लॉगिन / नोंदणी",
+        applyPortal: "अर्ज पोर्टल ↗", trackApp: "अर्ज ट्रॅक करा",
+        deptLabel: "विभाग:", incomeCapLabel: "उत्पन्न मर्यादा:",
+        statusInProgress: "प्रगतीपथावर", initiatedDate: "सुरू केलेली तारीख:", appStatusMsg: "स्थिती: संस्थात्मक स्तरावर कागदपत्र पडताळणी प्रक्रियेत आहे.",
+        noAppsTracked: "कोणतेही सक्रिय अर्ज ट्रॅक केलेले नाहीत.", matchProb: "- पात्रता संभाव्यता", probabilityText: "संभाव्यता",
+        catMatch: "✓ सामाजिक प्रवर्ग योजनेच्या निकषांशी जुळतो (+३०%)", catMismatch: "✕ सामाजिक प्रवर्ग जुळत नाही (+०%)",
+        incMatch: "✓ कौटुंबिक उत्पन्न मर्यादेच्या आत आहे ₹", incMismatch: "✕ कौटुंबिक उत्पन्न मर्यादेपेक्षा जास्त आहे (+०%)",
+        marksHigh: "✓ गुण ≥ ७५%: उच्च शैक्षणिक गुण (+२५%)", marksMod: "✓ गुण ६०%-७४%: मध्यम शैक्षणिक गुण (+१८%)",
+        marksPass: "✓ गुण ४०%-५९%: उत्तीर्ण पात्रता (+१०%)", marksLow: "✕ गुण मूलभूत निकषांपेक्षा कमी आहेत (+०%)",
+        docReadiness: "✓ कागदपत्र लॉकर तयारी"
+    }
+};
+
+/* LANGUAGE SWITCHER */
+function setLanguage(lang, e) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    if(e && e.target) {
+        e.target.classList.add('active');
+    }
+
+    document.querySelectorAll('[data-key]').forEach(elem => {
+        const key = elem.getAttribute('data-key');
+        if (i18n[lang] && i18n[lang][key]) {
+            elem.textContent = i18n[lang][key];
+        }
+    });
+
+    // Refresh dynamic content blocks according to active language
+    updateAuthUI();
+    updateDocUI();
+    renderScholarships();
+    populateCalcDropdown();
+    if (!document.getElementById('tab-applications').classList.contains('hidden')) {
+        renderApplications();
+    }
+}
+
+/* UI SWITCH NAVIGATION WITH ROUTE PROTECTION */
+function switchTab(tabId) {
+    if ((tabId === 'profile' || tabId === 'applications') && !currentUser) {
+        alert("Please login first to view your profile and saved applications.");
+        switchTab('auth');
+        return;
+    }
+
+    document.querySelectorAll('.section-pane').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('.nav-links button').forEach(el => el.classList.remove('active'));
+    
+    document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+    const btn = document.getElementById(`btn-${tabId}`);
+    if(btn) btn.classList.add('active');
+
+    if (tabId === 'scholarships') renderScholarships();
+    if (tabId === 'calculator') populateCalcDropdown();
+    if (tabId === 'applications') renderApplications();
+
+    // Close mobile menu on click
+    document.getElementById('navLinks').classList.remove('show');
+}
+
+function toggleMobileMenu() {
+    document.getElementById('navLinks').classList.toggle('show');
+}
+
+/* AUTHENTICATION SYSTEM */
+function updateAuthUI() {
+    const box = document.getElementById('authHeaderBox');
+    const dict = i18n[currentLang];
+    if (currentUser) {
+        box.innerHTML = `
+            <span class="user-status">${dict.welcomeUser}${currentUser.username}</span>
+            <button class="btn btn-danger" onclick="logout()">${dict.btnLogout}</button>
+        `;
+    } else {
+        box.innerHTML = `
+            <button class="btn btn-primary" onclick="switchTab('auth')">${dict.btnLoginRegister}</button>
+        `;
+    }
+}
+
+function toggleAuthMode() {
+    isRegisterMode = !isRegisterMode;
+    const dict = i18n[currentLang];
+    document.getElementById('authPaneTitle').textContent = isRegisterMode ? dict.authRegisterHeader : dict.authLoginHeader;
+    document.getElementById('authSubmitBtn').textContent = isRegisterMode ? dict.btnRegisterSubmit : dict.btnLoginSubmit;
+    document.getElementById('confirmPassGroup').style.display = isRegisterMode ? 'block' : 'none';
+    document.getElementById('authToggleLink').textContent = isRegisterMode ? dict.linkLogin : dict.linkRegister;
+}
+
+function handleAuth(e) {
+    e.preventDefault();
+    const username = document.getElementById('auth-username').value;
+    const pass = document.getElementById('auth-password').value;
+
+    if (isRegisterMode) {
+        const confirm = document.getElementById('auth-confirm').value;
+        if (pass !== confirm) { alert("Passwords do not match!"); return; }
+        currentUser = { username: username };
+        localStorage.setItem('av_current_user', JSON.stringify(currentUser));
+        alert("Registration successful!");
+    } else {
+        currentUser = { username: username };
+        localStorage.setItem('av_current_user', JSON.stringify(currentUser));
+        alert("Login successful!");
+    }
+    
+    loadUserData();
+    loadProfileFields();
+    updateDocUI();
+    updateAuthUI();
+    switchTab('profile');
+}
+
+function logout() {
+    currentUser = null;
+    localStorage.removeItem('av_current_user');
+    
+    loadUserData();
+    resetProfileFields();
+    updateDocUI();
+    updateAuthUI();
+    
+    // Hide results if open
+    const resultsBox = document.getElementById('calcResults');
+    if (resultsBox) resultsBox.style.display = "none";
+    
+    switchTab('home');
+}
+
+/* PROFILE & DOCUMENTS */
+function resetProfileFields() {
+    document.getElementById('prof-name').value = '';
+    document.getElementById('prof-category').value = '';
+    document.getElementById('prof-state').value = '';
+    document.getElementById('prof-income').value = '';
+    document.getElementById('prof-education').value = '';
+    document.getElementById('prof-percentage').value = '';
+}
+
+function saveProfile(e) {
+    e.preventDefault();
+    if (!currentUser) {
+        alert("Please login first to save your profile.");
+        switchTab('auth');
+        return;
+    }
+    
+    studentProfile = {
+        name: document.getElementById('prof-name').value,
+        category: document.getElementById('prof-category').value,
+        state: document.getElementById('prof-state').value,
+        income: Number(document.getElementById('prof-income').value),
+        education: document.getElementById('prof-education').value,
+        percentage: Number(document.getElementById('prof-percentage').value)
+    };
+    saveUserData();
+    alert("Profile details updated.");
+}
+
+function loadProfileFields() {
+    if (!studentProfile) {
+        resetProfileFields();
+        return;
+    }
+    document.getElementById('prof-name').value = studentProfile.name || '';
+    document.getElementById('prof-category').value = studentProfile.category || '';
+    document.getElementById('prof-state').value = studentProfile.state || '';
+    document.getElementById('prof-income').value = studentProfile.income || '';
+    document.getElementById('prof-education').value = studentProfile.education || '';
+    document.getElementById('prof-percentage').value = studentProfile.percentage || '';
+}
+
+function handleFileUpload(type) {
+    if (!currentUser) {
+        alert("Please login first to upload documents.");
+        switchTab('auth');
+        return;
+    }
+    userDocuments[type] = true;
+    saveUserData();
+    updateDocUI();
+}
+
+function updateDocUI() {
+    const dict = i18n[currentLang];
+    ['caste', 'income', 'marks'].forEach(type => {
+        const statusEl = document.getElementById(`st-${type}-status`);
+        if (userDocuments && userDocuments[type]) {
+            statusEl.textContent = dict.statusUploaded;
+            statusEl.style.color = "var(--success)";
+            statusEl.style.fontWeight = "bold";
+        } else {
+            statusEl.textContent = dict.statusMissing;
+            statusEl.style.color = "var(--text-muted)";
+            statusEl.style.fontWeight = "normal";
+        }
+    });
+}
+
+/* SCHOLARSHIP RENDERING */
+function renderScholarships() {
+    const container = document.getElementById('scholarshipsContainer');
+    if (!container) return;
+    const dict = i18n[currentLang];
+    container.innerHTML = "";
+
+    scholarshipDatabase.forEach(scheme => {
+        const item = document.createElement('div');
+        item.className = "scholarship-item";
+        item.innerHTML = `
+            <div class="scholarship-item-header">
+                <span>${scheme.name}</span>
+                <span class="status-badge badge-green">${scheme.state}</span>
+            </div>
+            <div class="scholarship-item-body">
+                <p style="margin-bottom:8px;"><strong>${dict.deptLabel}</strong> ${scheme.provider}</p>
+                <p style="margin-bottom:8px;"><strong>${dict.incomeCapLabel}</strong> ₹${scheme.maxIncome.toLocaleString('en-IN')}</p>
+                <div style="margin-top:10px;">
+                    <a href="${scheme.applyUrl}" target="_blank" class="btn btn-primary">${dict.applyPortal}</a>
+                    <button class="btn btn-default" onclick="trackScheme('${scheme.id}')">${dict.trackApp}</button>
+                </div>
+            </div>
+        `;
+        container.appendChild(item);
+    });
+}
+
+/* PROBABILITY CALCULATOR ENGINE */
+function populateCalcDropdown() {
+    const select = document.getElementById('calcSchemeSelect');
+    if (!select) return;
+    const dict = i18n[currentLang];
+    select.innerHTML = `<option value="">${dict.optChooseScheme}</option>`;
+    scholarshipDatabase.forEach(s => {
+        select.innerHTML += `<option value="${s.id}">${s.name}</option>`;
+    });
+}
+
+function calculateProbability() {
+    const schemeId = document.getElementById('calcSchemeSelect').value;
+    const resultsBox = document.getElementById('calcResults');
+    const dict = i18n[currentLang];
+
+    if (!schemeId) {
+        resultsBox.style.display = "none";
+        return;
+    }
+
+    if (!currentUser) {
+        alert("Please login first to access calculator features with your saved profile.");
+        switchTab('auth');
+        return;
+    }
+
+    if (!studentProfile) {
+        alert("Please save your profile information first to calculate probability.");
+        switchTab('profile');
+        return;
+    }
+
+    const scheme = scholarshipDatabase.find(s => s.id === schemeId);
+    let score = 0;
+    let breakdown = [];
+
+    // Category Score (30%)
+    if (scheme.category.includes(studentProfile.category)) {
+        score += 30;
+        breakdown.push(dict.catMatch);
+    } else {
+        breakdown.push(dict.catMismatch);
+    }
+
+    // Income Score (25%)
+    if (studentProfile.income <= scheme.maxIncome) {
+        score += 25;
+        breakdown.push(`${dict.incMatch}${scheme.maxIncome.toLocaleString('en-IN')} (+25%)`);
+    } else {
+        breakdown.push(dict.incMismatch);
+    }
+
+    // Academic Performance Score (25%)
+    if (studentProfile.percentage >= 75) {
+        score += 25;
+        breakdown.push(dict.marksHigh);
+    } else if (studentProfile.percentage >= 60) {
+        score += 18;
+        breakdown.push(dict.marksMod);
+    } else if (studentProfile.percentage >= 40) {
+        score += 10;
+        breakdown.push(dict.marksPass);
+    } else {
+        breakdown.push(dict.marksLow);
+    }
+
+    // Document Preparedness (20%)
+    let docsUploaded = 0;
+    if (userDocuments.caste) docsUploaded++;
+    if (userDocuments.income) docsUploaded++;
+    if (userDocuments.marks) docsUploaded++;
+    let docScore = Math.round((docsUploaded / 3) * 20);
+    score += docScore;
+    breakdown.push(`${dict.docReadiness} (${docsUploaded}/3 uploaded) (+${docScore}%)`);
+
+    // Render Output
+    resultsBox.style.display = "block";
+    document.getElementById('calcSchemeName').textContent = `${scheme.name} ${dict.matchProb}`;
+    document.getElementById('scorePercent').textContent = `${score}% ${dict.probabilityText}`;
+    
+    const fill = document.getElementById('scoreBar');
+    fill.style.width = `${score}%`;
+    fill.style.backgroundColor = score > 70 ? "var(--success)" : (score > 40 ? "var(--warning)" : "var(--danger)");
+
+    document.getElementById('calcBreakdown').innerHTML = breakdown.map(item => `<div style="padding:3px 0; font-size:12px;">${item}</div>`).join('');
+}
+
+/* APPLICATION TRACKER */
+function trackScheme(schemeId) {
+    if (!currentUser) {
+        alert("Please login first to track applications.");
+        switchTab('auth');
+        return;
+    }
+
+    const scheme = scholarshipDatabase.find(s => s.id === schemeId);
+    if (!scheme) return;
+
+    if (trackedApplications.some(a => a.id === schemeId)) {
+        alert("This scheme is already added to your tracker.");
+        return;
+    }
+
+    trackedApplications.push({
+        id: scheme.id,
+        name: scheme.name,
+        date: new Date().toLocaleDateString('en-IN')
+    });
+
+    saveUserData();
+    alert("Scheme added to Tracker.");
+}
+
+function renderApplications() {
+    const container = document.getElementById('applicationsContainer');
+    if (!container) return;
+    const dict = i18n[currentLang];
+    container.innerHTML = "";
+
+    if (!currentUser || trackedApplications.length === 0) {
+        container.innerHTML = `<p>${dict.noAppsTracked}</p>`;
+        return;
+    }
+
+    trackedApplications.forEach(app => {
+        const item = document.createElement('div');
+        item.className = "scholarship-item";
+        item.innerHTML = `
+            <div class="scholarship-item-header">
+                <span>${app.name}</span>
+                <span class="status-badge badge-orange">${dict.statusInProgress}</span>
+            </div>
+            <div class="scholarship-item-body">
+                <p><strong>${dict.initiatedDate}</strong> ${app.date}</p>
+                <p style="margin-top:5px; font-size:11px; color:#666;">${dict.appStatusMsg}</p>
+            </div>
+        `;
+        container.appendChild(item);
+    });
+}
+
+/* INITIALIZATION */
+loadUserData();
+updateAuthUI();
+loadProfileFields();
+updateDocUI();
+</script>
+</body>
+</html>
